@@ -1,0 +1,55 @@
+// 1. Define the coordinate rules in an array for easy access
+const positions = [
+  "translate(40vw, 18vh) scale(2.8)",
+  "translate(10vw, 36vh) scale(1.2)",
+  "translate(0vw, 63vh) scale(1)",
+  "translate(20vw, 100vh) scale(1)",
+  "translate(70vw, 100vh) scale(1)",
+  "translate(80vw, 63vh) scale(1)",
+  "translate(70vw, 36vh) scale(1.2)"
+];
+
+let rotations = 0;
+
+// 2. This array tracks which position each item (1-7) is currently at
+let currentState = [0, 1, 2, 3, 4, 5, 6];
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    rotate();
+    rotations++;
+  }
+});
+
+function rotate() {
+  currentState.unshift(currentState.pop());
+  display();
+}
+
+function display() {
+  const itemIds = ["itm1", "itm2", "itm3", "itm4", "itm5", "itm6", "itm7"];
+
+  itemIds.forEach((id, index) => {
+    const element = document.getElementById(id);
+    const targetPositionIndex = currentState[index];
+    const targetTransform = positions[targetPositionIndex];
+
+    if (element) {
+      element.animate(
+        [
+          // Keyframes: Browser automatically handles the "from" state
+          { transform: targetTransform }
+        ],
+        {
+          duration: 1000,
+          easing: "ease-in-out",
+          fill: "forwards" // This keeps the element at its destination
+        }
+      );
+    }
+  });
+}
+
+const nameText = document.getElementById("name");
+const descriptionText = document.getElementById("description");
