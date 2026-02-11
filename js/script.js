@@ -20,6 +20,7 @@ const nameTitles = [
 ]
 
 let rotations = 0;
+let rotations2 = 0
 
 // 2. This array tracks which position each item (1-7) is currently at
 let currentState = [0, 1, 2, 3, 4, 5, 6];
@@ -28,6 +29,7 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
     e.preventDefault();
     rotate();
+    rotations2++;
   }
 });
 
@@ -61,7 +63,7 @@ function display() {
       );
     }
 
-    if (rotations % 7 === 3) {
+    if (rotations2 % 7 === 3) {
       document.querySelector("#penelope1").play();
     } else {
       document.querySelector("#penelope1").pause();
