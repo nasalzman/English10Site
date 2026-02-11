@@ -20,7 +20,7 @@ const nameTitles = [
 ]
 
 let rotations = 0;
-let rotations2 = 0
+let rotations2 = 0;
 
 // 2. This array tracks which position each item (1-7) is currently at
 let currentState = [0, 1, 2, 3, 4, 5, 6];
