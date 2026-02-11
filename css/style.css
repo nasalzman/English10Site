@@ -104,6 +104,18 @@ li {
 #itm6 {transform: translate(80vw, 63vh) scale(1)}
 #itm7 {transform: translate(70vw, 36vh) scale(1.2)}
 
+#penelope2 {
+  object-fit: contain;
+}
+
+#nameTitle {
+  position: absolute;
+  font-size: 30px;
+  top: 66%;
+  left: 31%;
+  z-index: 100;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

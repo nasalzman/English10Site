@@ -9,6 +9,16 @@ const positions = [
   "translate(70vw, 36vh) scale(1.2)"
 ];
 
+const nameTitles = [
+  "Rowan: untitled",
+  "Rowan: untitled",
+  "Selah: untitled",
+  "Selah: untitled",
+  "Pénélope: Drunk Dreams",
+  "Pénélope: Metal Face",
+  "Nathan: The Web of Abuse",
+]
+
 let rotations = 0;
 
 // 2. This array tracks which position each item (1-7) is currently at
@@ -18,12 +28,14 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
     e.preventDefault();
     rotate();
-    rotations++;
   }
 });
 
 function rotate() {
+  rotations++
   currentState.unshift(currentState.pop());
+  const nameTitle = document.getElementById("nameTitle")
+  nameTitle.textContent = nameTitles[rotations % 7];
   display();
 }
 
@@ -48,8 +60,12 @@ function display() {
         }
       );
     }
+
+    if (rotations % 7 === 3) {
+      document.querySelector("#penelope1").play();
+    } else {
+      document.querySelector("#penelope1").pause();
+      document.querySelector("#penelope1").currentTime = 0;
+    }
   });
 }
-
-const nameText = document.getElementById("name");
-const descriptionText = document.getElementById("description");
