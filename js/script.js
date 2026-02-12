@@ -12,8 +12,8 @@ const positions = [
 const nameTitles = [
   "Rowan: Powwow",
   "Rowan: Framed",
-  "Selah: untitled",
-  "Selah: untitled",
+  "Selah: The Fridge",
+  "Selah: The Cycle",
   "Pénélope: Drunk Dreams",
   "Pénélope: Metal Face",
   "Nathan: The Web of Abuse",
