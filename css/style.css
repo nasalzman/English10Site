@@ -104,7 +104,7 @@ li {
 #itm6 {transform: translate(80vw, 63vh) scale(1)}
 #itm7 {transform: translate(70vw, 36vh) scale(1.2)}
 
-#penelope2 {
+.noresize {
   object-fit: contain;
 }
 

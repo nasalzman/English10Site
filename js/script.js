@@ -10,8 +10,8 @@ const positions = [
 ];
 
 const nameTitles = [
-  "Rowan: untitled",
-  "Rowan: untitled",
+  "Rowan: Powwow",
+  "Rowan: Framed",
   "Selah: untitled",
   "Selah: untitled",
   "Pénélope: Drunk Dreams",
@@ -68,6 +68,13 @@ function display() {
     } else {
       document.querySelector("#penelope1").pause();
       document.querySelector("#penelope1").currentTime = 0;
+    }
+
+    if (rotations2 % 7 === 0) {
+      document.querySelector("#rowan1").play();
+    } else {
+      document.querySelector("#rowan1").pause();
+      document.querySelector("#rowan1").currentTime = 0;
     }
   });
 }
