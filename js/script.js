@@ -20,7 +20,6 @@ const nameTitles = [
 ]
 
 let rotations = 0;
-let rotations2 = 0;
 
 // 2. This array tracks which position each item (1-7) is currently at
 let currentState = [0, 1, 2, 3, 4, 5, 6];
@@ -29,16 +28,25 @@ document.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
     e.preventDefault();
     rotate();
-    rotations2++;
   }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  syncNameTitle();
+  syncPlayback();
+});
+
+document.addEventListener("pointerdown", function() {
+  syncPlayback();
+}, { once: true });
+
 function rotate() {
-  rotations++
+  rotations++;
   currentState.unshift(currentState.pop());
-  const nameTitle = document.getElementById("nameTitle")
-  nameTitle.textContent = nameTitles[rotations % 7];
+  syncNameTitle();
   display();
+  syncPlayback();
+  console.log(rotations % 7);
 }
 
 function display() {
@@ -62,19 +70,29 @@ function display() {
         }
       );
     }
-
-    if (rotations2 % 7 === 3) {
-      document.querySelector("#penelope1").play();
-    } else {
-      document.querySelector("#penelope1").pause();
-      document.querySelector("#penelope1").currentTime = 0;
     }
+  );
+}
 
-    if (rotations2 % 7 === 0) {
-      document.querySelector("#rowan1").play();
-    } else {
-      document.querySelector("#rowan1").pause();
-      document.querySelector("#rowan1").currentTime = 0;
-    }
-  });
+function syncNameTitle() {
+  const nameTitle = document.getElementById("nameTitle");
+  nameTitle.textContent = nameTitles[rotations % 7];
+}
+
+function syncPlayback() {
+  const penelopeVideo = document.querySelector("#penelope1");
+  const rowanVideo = document.querySelector("#rowan1");
+
+  if (rotations % 7 === 4) {
+    penelopeVideo.play().catch(() => {});
+  } else {
+    penelopeVideo.pause();
+    penelopeVideo.currentTime = 0;
+  }
+  if (rotations % 7 === 0) {
+    rowanVideo.play().catch(() => {});
+  } else {
+    rowanVideo.pause();
+    rowanVideo.currentTime = 0;
+  }
 }
